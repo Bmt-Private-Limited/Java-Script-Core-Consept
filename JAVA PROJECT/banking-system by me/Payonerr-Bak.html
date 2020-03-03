@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payonerr-Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="Payonerr-bak.css">
+</head>
+<body>
+
+  <!--log in area -->
+        <div id="login-area">
+            <h1 class="text-center main-heading">Wel-come To Our Bank</h1>
+
+            <div class="SubmitArea">
+                <h1 class="LogInHeading">Log In</h1>
+                <input type="text" class="form-control">
+                <br>
+                <input type="password" class="form-control">
+                <br>
+                <button id="login" class="btn btn-success">Log In Now</button>
+            </div>
+        </div>
+
+<!-- transaction area -->
+          <!-- deposit -->
+        <div id="transaction-Area">
+            <div class="row TAfirst-row">
+                <div class="col-md-4 first-col">
+                  <div class="deposit">
+                    <h2>Deposit</h2>
+                    <h1>$ <span id="currentDeposit">00</span></h1>                       
+                  </div>
+                </div>
+
+                <!-- withdraw -->
+                <div class="col-md-4 second-col">
+                  <div class="Withdraw">
+                     <h2>Withdraw</h2>
+                     <h1>$ <span id="currentWithdraw">00</span></h1>                       
+                    </div>
+                </div>
+
+                <!-- balance -->
+                <div class="col-md-4 third-col">
+                    <div class="Balance">
+                        <h2>Balance</h2>
+                        <h1>$ <span id="currentbalance">100</span></h1>                       
+                      </div>
+                </div>
+            </div>
+            
+            <!-- deposit area -->
+
+            <div class="row TASecond-Row">
+                <div class="col-sm-6">
+                  <div class="card money-Deposit">
+                    <div class="card-body">
+                      <h3 class="card-title">Deposit</h3>
+                      <input type="text" class="form-control" id="depositAmount1" placeholder="$Enter Your Amount"><br>
+                     <button class="btn btn-success" id="addDeposit">Deposit</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- withdraw area -->
+                
+                <div class="col-sm-6">
+                  <div class="card money-Withdraw">
+                    <div class="card-body">
+                      <h3 class="card-title">Withdraw</h3>
+                      <input id="withdrawAmount"  type="text"  class="form-control" placeholder="$Enter Your Amount"><br>
+                      <button id="addWithdraw" class="btn btn-success">Withdraw</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <script>
+            // log in button event handler**************************************
+            const loginBtn = document.getElementById("login")
+            loginBtn.addEventListener("click", function() {
+            const logInArea = document.getElementById("login-area") 
+            logInArea.style.display = "none";       
+            const transactionArea = document.getElementById("transaction-Area") 
+            transactionArea.style.display = "block";               
+            })
+                      // Deposit transaction handler**************************************
+            const depositBtn = document.getElementById("addDeposit");
+            depositBtn.addEventListener("click" , function() {
+            // const depositAmount = document.getElementById("depositAmount1").value; 
+            // const depositNumber = parseFloat(depositAmount);     //(CURRENT DEPOSIT AMOUNT******)
+            const depositNumber  =getInputNumber("depositAmount1");   
+
+            updateSpanText("currentDeposit" , depositNumber);
+            updateSpanText("currentbalance" , depositNumber);
+            document.getElementById("depositAmount1").value = ""; //for clean input box******
+
+            })
+
+
+                      // withdraw transaction handler**************************************
+                      const withdrawBtn = document.getElementById("addWithdraw");
+                      withdrawBtn.addEventListener("click" , function() {
+            // const withdrawAmount = document.getElementById("withdrawAmount").value; 
+            // const withdrawNumber = parseFloat(withdrawAmount);     //(CURRENT WITHDRAW AMOUNT******)
+                      const withdrawNumber  =getInputNumber("withdrawAmount");   
+                      updateSpanText("currentWithdraw" , withdrawNumber);
+                      updateSpanText("currentbalance" ,-1 * withdrawNumber);
+                      document.getElementById("withdrawAmount").value = ""; //for clean input box******
+          })
+
+
+            function getInputNumber(id) {
+              const Amount = document.getElementById(id).value; 
+            const AmountNumber = parseFloat(Amount);    
+            return  AmountNumber;
+            }
+
+            function updateSpanText(id, depositNumber) {
+            const currentBalance = document.getElementById(id).innerText;  //(CURRENT balance AMOUNT******)
+            const currentBalanceNumber = parseFloat(currentBalance);
+            const totelBalance = currentBalanceNumber + depositNumber ;
+            document.getElementById(id).innerText = totelBalance; // (TOTEL AMOUNT******) 
+            }
+
+
+          
+
+
+            
+            // Deposit transaction handler**************************************
+
+            //      // all time use ".innerText" this to get a value from any element escape input ".value" element.
+            // const currentDeposit = document.getElementById("currentDeposit").innerText;
+            // const depositNumber1 = parseFloat(currentDeposit);  //till now useless for me (OLD DEPOSIT AMOUNT******)
+            // const totelDeposit = depositNumber1 + depositNumber; //(TOTEL AMOUNT******)
+            // document.getElementById("currentDeposit").innerText = totelDeposit ;
+            
+            // balance transaction handler***********************************************************************************
+
+            // const currentbalance = document.getElementById("currentbalance").innerText;  //(CURRENT balance AMOUNT******)
+            // const balanceNumber1 = parseFloat(currentDeposit);
+            // const totelBalance = balanceNumber1 +depositNumber ;
+
+            // document.getElementById("currentbalance").innerText = totelBalance; // (TOTEL AMOUNT******) 
+          </script>
+                    
+</body>
+</html>
+
+
+

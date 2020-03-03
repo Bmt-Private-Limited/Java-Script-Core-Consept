@@ -1,0 +1,64 @@
+*{padding: 0; margin: 0;}
+
+body{
+    padding: 100px;
+}
+
+.SubmitArea{
+   padding: 20px;
+   box-shadow: 4px 6px 10px 3px black;
+   border-radius: 10px;
+}
+
+.main-heading{
+    margin-bottom: 85px;
+}
+.LogInHeading{
+    margin-bottom: 20px;
+}
+#transaction-Area{
+    display: none;
+}
+
+.deposit{
+    text-align: center;
+    background: #002bffc7;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.Withdraw{
+    text-align: center;
+    background: lightcoral;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+
+}
+.Balance{
+    text-align: center;
+    background: #ff8d00c7;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+
+}
+.TASecond-Row{
+    margin-top: 72px;
+    text-align: center;
+}
+.TAfirst-row{
+    margin-top: 70px;
+    text-align: center;
+    }
+.money-Deposit{
+    background-color: #f8fafa;
+    box-shadow: 5px 5px 13px 2px black;
+    margin-bottom: 40px;
+
+}
+.money-Withdraw{
+    background-color: #f8fafa;
+    box-shadow: 5px 5px 13px 2px black;
+
+}
